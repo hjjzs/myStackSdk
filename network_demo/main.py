@@ -1,6 +1,5 @@
 import openstack
 
-
 conn = openstack.connect(
     auth_url="http://10.255.9.202:5000/v3",
     username="admin",
@@ -54,7 +53,11 @@ def list_routers():
 def create_router(router_name, ext_net_id):
     # conn.network.create_router()
     router = conn.create_router(name=router_name, ext_gateway_net_id=ext_net_id)
-    print(router)
+
+    # router = conn.network.find_router("testss")
+    # print(router)
+    # rr = conn.network.update_router(router=router, external_gateway_info={"network_id": ext_net_id})
+    # print(rr)
 
 
 def add_int_to_router(route, sub_id):
@@ -100,12 +103,11 @@ if __name__ == '__main__':
     # create_network()
     # get_network("29a7ae73-e050-43fd-aa6a-175cf8c41a0d")
     # find_network("test2")
-    list_subnets()
+    # list_subnets()
     # find_subnet("openstacksdk-example-project-subnet")
-    # create_router("hjj", "8df06424-7ab2-460d-af4e-27ee518349f4")
+    create_router("testss", "8df06424-7ab2-460d-af4e-27ee518349f4")
     # list_network_agents()
     # create_security_group()
 
     # route = conn.network.find_router("hjj")
     # add_int_to_router(route, "63fe0a1a-275e-4c06-8df4-82feec662cdc")
-
