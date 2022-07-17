@@ -3,14 +3,10 @@ import openstack
 
 conn = openstack.connect(
     auth_url="http://10.255.9.202:5000/v3",
-    project_name="admin",
     username="admin",
     password="000000",
-    region_name="RegionOne",
-    user_domain_name="demo",
-    project_domain_name="demo",
-    app_name='examples',
-    app_version='1.0', )
+    user_domain_name="demo"
+)
 
 
 def list_networks():
@@ -39,9 +35,7 @@ def list_subnets():
 
 
 def find_subnet(sub_name):
-
     net = conn.network.find_subnet(sub_name)
-
     print(net)
 
 
@@ -53,7 +47,6 @@ def list_ports():
 
 def list_routers():
     print("List Routers:")
-
     for router in conn.network.routers():
         print(router)
 
@@ -88,12 +81,9 @@ def create_security_group():
 
 def create_network():
     print("Create Network:")
-
     example_network = conn.network.create_network(
         name='openstacksdk-example-project-network')
-
     print(example_network)
-
     example_subnet = conn.create_subnet(
         name='hjjzs',
         network_name_or_id=example_network.id,
@@ -101,7 +91,6 @@ def create_network():
         cidr='10.0.4.0/24',
         # gateway_ip='10.0.4.1'
     )
-
     print(example_subnet)
 
 
